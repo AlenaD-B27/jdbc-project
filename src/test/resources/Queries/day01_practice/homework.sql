@@ -55,18 +55,55 @@ where DEPARTMENT_ID in (50, 80, 100);
 -- 19. display all employees who does not work in any one of these department id 90, 60,  100, 130, 120
 select * from EMPLOYEES
 where DEPARTMENT_ID not in (90, 60, 100, 130,120);
--- 20. divide employees into groups by using thier job id
+-- 20. divide employees into groups by using their job id
+
+select JOB_ID,count(*) from EMPLOYEES
+group by JOB_ID;
 
 -- 1 display the maximum salaries in each groups
 
+select JOB_ID, max(SALARY) as max_salary from EMPLOYEES
+group by JOB_ID;
+
+
 -- 2 display the minium salaries in each groups
+
+select JOB_ID, min(SALARY) as min_salary from EMPLOYEES
+group by JOB_ID;
 
 -- 3 display the average salary of each group
 
+select JOB_ID, avg(SALARY) as average_salary from EMPLOYEES
+group by JOB_ID;
+
 -- 4 how many employees are there in each group that have minimum salary of 5000 ?
+
+select JOB_ID, count(*) from EMPLOYEES
+group by JOB_ID
+having min(SALARY) >= 5000;
+
 
 -- 5 display the total budgets of each groups
 
+select JOB_ID,sum(SALARY) as total_budget from EMPLOYEES
+group by JOB_ID;
+
 -- 21. display all job_id and average salary who work as any of these jobs IT_PROG,SA_REP, FI_ACCOUNT, AD_VP
+
+select JOB_ID, avg(SALARY) as average_salary from EMPLOYEES
+where JOB_ID in('IT_PROG','SA_REP', 'FI_ACCOUNT', 'AD_VP')
+group by JOB_ID;
+
 -- 22.display max salary  for each department
+
+select DEPARTMENT_ID, max(SALARY) as max_salary from EMPLOYEES
+where DEPARTMENT_ID is not null
+group by DEPARTMENT_ID
+order by 2;
+
 -- 23. display total salary for each department except department_id 50, and where total salary >30000
+
+select DEPARTMENT_ID, sum(SALARY) as total_salary from EMPLOYEES
+where DEPARTMENT_ID not in 50
+group by DEPARTMENT_ID
+having sum(SALARY) > 30000;
