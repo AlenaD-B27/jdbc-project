@@ -16,8 +16,9 @@ where SALARY > (select avg(salary) from EMPLOYEES);
 select * from EMPLOYEES
 where salary < (select avg(salary) from EMPLOYEES);
 -- 7. display manager name of 'Neena'
-select FIRST_NAME||' '||LAST_NAME as full_name from EMPLOYEES
-where FIRST_NAME in 'Neena' and MANAGER_ID is not null;
+select FIRST_NAME||' '||LAST_NAME as manager from EMPLOYEES
+where EMPLOYEE_ID = (select MANAGER_ID from EMPLOYEES
+                     where FIRST_NAME = 'Neena');
 -- 8. find the 3rd maximum salary from the employees table (do not include duplicates)
 select min(SALARY) from
 (select distinct SALARY from EMPLOYEES
