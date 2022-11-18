@@ -94,4 +94,21 @@ select FIRST_NAME,LAST_NAME,ADDRESS,PHONE
 from address a right join CUSTOMER c
                           on a.ADDRESS_ID = c.ADDRESS_ID;
 
+/*
+
+ LEFT OUTER WITH WHERE
+
+-- Get me unique part from LEFT table
+
+NOTE --> if there is a customer with c.address_id 6 , there is no matching data from address table
+         So it will assign as value for a.address_id as NULL
+
+ That is why we are checking address.address_id IS NULL to make get ONLY unique data from left side
+
+
+ */
+SELECT customer_id, first_name, last_name, address, phone FROM customer LEFT OUTER JOIN address
+ON customer.address_id = address.address_id
+where address.address_id is null;
+
 
