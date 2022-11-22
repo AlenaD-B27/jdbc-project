@@ -102,16 +102,20 @@ public class P04_ListOfMaps {
 
         while(rs.next()){
 
-            Map<String, Object> rowMap = new HashMap<>(); // ---> empty the map value each next row to start collecting the data for next row.
+            Map<String,Object> rowMap = new HashMap<>(); // ---> empty the map value each next row to start collecting the data for next row.
 
-            for (int i = 0; i <= rsmd.getColumnCount(); i++){
-                rowMap.put(rsmd.getColumnName(i),rs.getString(i) ); // ---> Map<ColumnName,RowData> ---> as many times as many columns.
+            for (int i = 1; i <= rsmd.getColumnCount(); i++){
+                rowMap.put(rsmd.getColumnName(i),rs.getString(i)); // ---> Map<ColumnName,RowData> ---> as many times as many columns.
             }  // ---> Map of 1 row is ready
 
 
             dataList.add(rowMap); // ---> Add Map row to the List
 
         }
+
+        System.out.println("---- ALL DATA --- ");
+        System.out.println(dataList);
+
 
 
 
