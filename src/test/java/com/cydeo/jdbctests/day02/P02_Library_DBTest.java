@@ -25,7 +25,7 @@ public class P02_Library_DBTest {
 
 
         // get data from UI
-        String bookCountUI = "3963";
+        String bookCountUI = "3988";
 
         // compare
         // DB --> expected
@@ -41,8 +41,6 @@ public class P02_Library_DBTest {
             <version>8.0.25</version>
         </dependency>
          */
-
-
 
 
 
